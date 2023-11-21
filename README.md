@@ -1,64 +1,98 @@
-# rollup-plugin-template
+# rollup-plugin-file-resolve
 
-The template for my rollup plugins.
+Rollup plugin to resolve files with custom loaders at build time.
 
 ## Installation
 
 npm:
 
 ```console
-npm i rollup-plugin-template -D
+npm i rollup-plugin-file-resolve -D
 ```
 
 yarn:
 
 ```console
-yarn add rollup-plugin-template -D
+yarn add rollup-plugin-file-resolve -D
 ```
 
 pnpm:
 
 ```console
-pnpm add rollup-plugin-template -D
+pnpm add rollup-plugin-file-resolve -D
 ```
 
 ## Usage
 
-```js
-import template from "rollup-plugin-template";
-
-export default {
-  input: "src/index.js",
-  output: {
-    dir: "output",
-    format: "cjs"
-  },
-  plugins: [template()]
-};
-```
+Checkout the [Example](https://github.com/AngeloCore/rollup-plugin-file-resolve/tree/main/test)
 
 ## Options
 
-### `cool`
+### `[alias]`
 
-Type: `boolean` <br>
-Default: `true`
+Type: `text | object` <br>
 
-Determines if the plugin is cool
+Determines from where to resolve the specific file.
+
+Available built-in loaders: `text`
+
+For example:
+
+```js
+{
+  // Resolve `lmao` from `library.js`
+  lmao: "project/library.js",
+
+  // Resolve `myo` from `file.txt` and import it as a string
+  myo: {
+    path: "project/file.txt",
+    loader: "text"
+  }
+}
+```
+
+Example output:
+
+```js
+var lmao = "Random ahh file";
+
+function myo(text) {
+  console.log(text);
+}
+```
+
+## Custom loaders
+
+Using your own custom loader is very simple, just replace the `loader` prop with a function.
+
+Here is an example:
+
+```js
+myo: {
+  path: "project/file.txt",
+  loader: async (code) => await transform(code)
+}
+```
+
+The loader function can be both sync or async.
 
 ## Exports
 
-### `doIt(thing: string)`
+### `loaders`
 
-Returns: `string`
+Returns: Object of default loaders:
 
-It does the specific thing.
+```js
+{
+  text: (code) => code;
+}
+```
 
 ## Information
 
 ### Resources
 
-- [Github](https://github.com/AngeloCore/rollup-plugin-template)
+- [Github](https://github.com/AngeloCore/rollup-plugin-file-resolve)
 - [Rollup](https://rollupjs.org/)
 
 Made by [Angelo II](https://github.com/AngeloCore)
