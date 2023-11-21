@@ -1,0 +1,26 @@
+{
+  "name": "rollup-plugin-template",
+  "version": "1.0.0",
+  "description": "The template for my rollup plugins.",
+  "main": "lib/index.js",
+  "types": "types/index.d.ts",
+  "type": "module",
+  "keywords": [],
+  "author": "Angelo II",
+  "license": "MIT",
+  "homepage": "https://github.com/AngeloCore/rollup-plugin-template",
+  "funding": "https://paypal.me/AngeloCore",
+  "repository": {
+    "url": "AngeloCore/rollup-plugin-template"
+  },
+  "scripts": {
+    "prepublishOnly": "npm run format && npm run build",
+    "format": "prettier --write src/*.ts",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "prettier": "^3.1.0",
+    "rollup": "^4.5.0",
+    "typescript": "^5.3.2"
+  }
+}
