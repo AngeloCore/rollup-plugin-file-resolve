@@ -5,7 +5,11 @@
   "main": "lib/index.js",
   "types": "types/index.d.ts",
   "type": "module",
-  "keywords": [],
+  "keywords": [
+    "rollup",
+    "rollup-plugin",
+    "angelo"
+  ],
   "author": "Angelo II",
   "license": "MIT",
   "homepage": "https://github.com/AngeloCore/rollup-plugin-file-resolve",
